@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Thiệp Mời Cưới</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Great+Vibes&family=Roboto:wght@300;400&family=Cinzel:wght@400;700&family=Lora:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f8f1e9;
+            color: #4a3c31;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('111111.jpg') no-repeat center center/cover;
+            filter: brightness(0.7) blur(2px);
+            z-index: -1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.5));
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            padding: 20px;
+        }
+
+        .font-script {
+            font-family: 'Great Vibes', cursive;
+            color: #d4a373;
+        }
+
+        .font-elegant {
+            font-family: 'Playfair Display', serif;
+            color: #ffffff;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+        }
+
+        .date-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin: 20px 0;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
+
+        .date-box div {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .gioi-thieu {
+            padding: 60px 20px;
+            text-align: center;
+            background: #fff;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            margin: 20px auto;
+            max-width: 900px;
+            border-radius: 15px;
+        }
+
+        .gioi-thieu h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: #5a3e36;
+            margin-bottom: 20px;
+        }
+
+        .profile-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        @media (min-width: 768px) {
+            .profile-container {
+                flex-direction: row;
+                justify-content: center;
+                gap: 60px;
+            }
+        }
+
+        .profile {
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .profile:hover {
+            transform: scale(1.05);
+        }
+
+        .profile img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 5%;
+            border: 4px solid #d4a373;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: #5a3e36;
+            margin-top: 15px;
+        }
+
+        .intro-text {
+            font-size: 1.1rem;
+            color: #444;
+            line-height: 1.8;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Thank You Section */
+        .thank-you-section {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: url('anh4.jpg') no-repeat center center/cover;
+            color: #ffffff;
+            overflow: hidden;
+        }
+
+        .thank-you-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        .thank-you-content {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+            padding: 20px;
+        }
+
+        .thank-you-content h2 {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 3.5rem;
+            color: #f5e6cc;
+            margin-bottom: 25px;
+            letter-spacing: 2px;
+            animation: typing 2s steps(40, end), fadeIn 2s ease-in-out;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 2px solid transparent; /* Hiệu ứng con trỏ nhấp nháy */
+        }
+
+        .thank-you-content p {
+            font-family: 'Lora', serif;
+            font-weight: 400;
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: #ffffff;
+            margin-bottom: 30px;
+            animation: fadeIn 2s ease-in-out 0.5s forwards; /* Delay 0.5s để xuất hiện sau tiêu đề */
+            opacity: 0; /* Ban đầu ẩn để animation hoạt động */
+        }
+
+        .share-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .share-button {
+            width: 50px;
+            height: 50px;
+            background: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #5a3e36;
+            font-size: 1.5rem;
+            transition: background 0.3s ease;
+        }
+
+        .share-button:hover {
+            background: #d4a373;
+            color: #ffffff;
+        }
+
+        .share-label {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        /* Animation Keyframes */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 640px) {
+            .hero-content h1, .thank-you-content h2 {
+                font-size: 2.5rem;
+            }
+
+            .date-box div {
+                font-size: 1.5rem;
+            }
+
+            .gioi-thieu h2 {
+                font-size: 2rem;
+            }
+
+            .profile h3 {
+                font-size: 1.3rem;
+            }
+
+            .profile img {
+                width: 100%;
+                height: 100%;
+            }
+
+            .thank-you-content p {
+                font-size: 1.1rem;
+            }
+
+            .share-button {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <p class="font-script text-2xl mb-4">Save The Date</p>
+        <h1 class="font-elegant">LÊ Quỳnh</h1>
+        <p class="font-elegant text-2xl my-2">&</p>
+        <h1 class="font-elegant">Đoàn Biển</h1>
+        <div class="date-box font-elegant">
+            <div>27.04.2025</div>
+        </div>
+    </div>
+</section>
+
+<!-- Phần giới thiệu -->
+<section class="gioi-thieu">
+    <h2>GIỚI THIỆU</h2>
+    <div class="profile-container">
+        <div class="profile">
+            <img src="me.jpg" alt="Lê Quỳnh - Chú Rể">
+            <h3>Chú Rể : Lê Quỳnh</h3>
+        </div>
+        <div class="profile">
+            <img src="codau.jpg" alt="Đoàn Biển - Cô Dâu">
+            <h3>Cô Dâu : Đoàn Biển</h3>
+        </div>
+    </div>
+
+    <section class="relative bg-white rounded-b-[50%] overflow-hidden" style="height: 500px">
+        <!-- Ảnh nền -->
+        <div class="absolute inset-0 z-0">
+            <img src="DSC03194.jpg" alt="Couple" class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-black/40"></div>
+        </div>
+
+        <!-- Nội dung countdown -->
+        <div class="relative z-10 text-center text-white py-12 px-4 " style="margin-top: 130px">
+            <p class="uppercase tracking-wide text-sm sm:text-base">CÙNG ĐẾM NGƯỢC THỜI GIAN</p>
+            <p class="text-2xl sm:text-4xl tracking-wide backdrop-blur-sm">SAVE THE DATE</p>
+
+            <!-- Countdown -->
+            <div id="countdown" class="flex justify-center gap-4 mt-4 flex-wrap">
+                <div class="flex flex-col items-center w-20 sm:w-24 bg-white/20 backdrop-blur-sm rounded-lg p-2">
+                    <span id="days" class="text-2xl font-bold">00</span>
+                    <span class="text-sm sm:text-base">Ngày</span>
+                </div>
+                <div class="flex flex-col items-center w-20 sm:w-24 bg-white/20 backdrop-blur-sm rounded-lg p-2">
+                    <span id="hours" class="text-2xl font-bold">00</span>
+                    <span class="text-sm sm:text-base">Giờ</span>
+                </div>
+                <div class="flex flex-col items-center w-20 sm:w-24 bg-white/20 backdrop-blur-sm rounded-lg p-2">
+                    <span id="minutes" class="text-2xl font-bold">00</span>
+                    <span class="text-sm sm:text-base">Phút</span>
+                </div>
+                <div class="flex flex-col items-center w-20 sm:w-24 bg-white/20 backdrop-blur-sm rounded-lg p-2">
+                    <span id="seconds" class="text-2xl font-bold">00</span>
+                    <span class="text-sm sm:text-base">Giây</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="relative z-10 px-4 py-10 text-center text-brown-800">
+        <div class="bg-white/90 rounded-3xl max-w-md mx-auto p-6 shadow-lg">
+            <img src="DSC03194.jpg" alt="Cô Dâu và Chú Rể" class="w-48 h-64 object-cover mx-auto rounded-t-[48%] rounded-b-[0%] shadow-md" />
+
+            <h3 class="mt-6 text-xl font-semibold tracking-wider">TIỆC NHÀ GÁI</h3>
+            <p class="mt-2 text-sm uppercase font-medium">TƯ GIA</p>
+            <p class="text-sm leading-5">
+                Số 56 - Đường Thanh Niên - Khu Vườn Sái<br>
+                TT Đồng Đăng - Cao Lộc - Lạng Sơn
+            </p>
+
+            <p class="mt-4 font-semibold text-[16px]">Vào lúc 10:00</p>
+
+            <!-- Ngày tháng -->
+            <div class="mt-4 flex items-center justify-center gap-2 text-brown-800">
+                <span class="text-sm font-medium">Chủ Nhật</span>
+                <span class="text-3xl font-bold tracking-wide">27/04</span>
+                <span class="text-sm font-medium">2025</span>
+            </div>
+
+            <p class="mt-1 text-xs italic text-gray-600">Tức ngày 30 tháng 3 năm 2025 Âm lịch</p>
+
+            <!-- Icon -->
+            <div class="mt-4 flex justify-center gap-6 text-brown-800 text-xl">
+                <a href="tel:0969914832"><i class="fas fa-phone"></i></a>
+                <a href="https://maps.app.goo.gl/1zow8V1HbMhe7GTv7"><i class="fas fa-map-marker-alt"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="relative z-10 px-4 py-10 text-center text-brown-800">
+        <div class="bg-white/90 rounded-3xl max-w-md mx-auto p-6 shadow-lg">
+            <img src="anh1.jpg" alt="Cô Dâu và Chú Rể" class="w-48 h-64 object-cover mx-auto rounded-t-[48%] rounded-b-[0%] shadow-md" />
+
+            <h3 class="mt-6 text-xl font-semibold tracking-wider">TIỆC NHÀ TRAI</h3>
+            <p class="mt-2 text-sm uppercase font-medium">TƯ GIA</p>
+            <p class="text-sm leading-5">
+                Xẻn - Phúc Khánh - Yên Lập - Phú Thọ<br>
+            </p>
+
+            <p class="mt-4 font-semibold text-[16px]">Vào lúc 16:00</p>
+
+            <!-- Ngày tháng -->
+            <div class="mt-4 flex items-center justify-center gap-2 text-brown-800">
+                <span class="text-sm font-medium">Thứ Hai </span>
+                <span class="text-3xl font-bold tracking-wide">28/04</span>
+                <span class="text-sm font-medium">2025</span>
+            </div>
+
+            <p class="mt-1 text-xs italic text-gray-600">Tức ngày 1 tháng 4 năm 2025 Âm lịch</p>
+
+            <!-- Icon -->
+            <div class="mt-4 flex justify-center gap-6 text-brown-800 text-xl">
+                <a href="tel:0338691729"><i class="fas fa-phone"></i></a>
+                <a href="https://maps.app.goo.gl/WB78exdcNPzvwX9e8"><i class="fas fa-map-marker-alt"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Nút Gửi Quà -->
+    <div class="text-center my-10">
+        <p class="text-xl font-semibold text-brown-800 mb-4">Gửi quà đến<br>cô dâu và chú rể</p>
+        <img
+                src="QR_1.png"
+                alt="QR ngân hàng"
+                class="w-64 h-64 object-contain mx-auto rounded-xl border border-gray-300"
+        />
+    </div>
+
+    <!-- Modal hiển thị ảnh QR -->
+    <div
+            id="giftModal"
+            class="fixed inset-0 bg-black/60 flex items-center justify-center z-50 hidden"
+    >
+        <div class="bg-white p-6 rounded-2xl shadow-xl relative max-w-xs w-full text-center">
+            <button
+                    onclick="document.getElementById('giftModal').classList.add('hidden')"
+                    class="absolute top-2 right-2 text-gray-500 hover:text-red-500 text-xl"
+            >
+                ×
+            </button>
+
+            <h3 class="text-lg font-semibold text-brown-800 mb-4">Quét mã để gửi quà</h3>
+            <img
+                    src="QR_2.png"
+                    alt="QR ngân hàng"
+                    class="w-64 h-64 object-contain mx-auto rounded-xl border border-gray-300"
+            />
+            <p class="mt-4 text-sm text-gray-600">Cảm ơn bạn rất nhiều!</p>
+        </div>
+    </div>
+
+    <!-- Thank You Section -->
+    <section class="thank-you-section">
+        <div class="thank-you-overlay"></div>
+        <div class="thank-you-content">
+            <h2>Thank you!</h2>
+            <p class="mt-1 text-xs italic">Sự hiện diện của quý vị là niềm vinh hạnh cho gia đình chúng tôi. Chân thành cảm ơn!</p>
+        </div>
+    </section>
+</section>
+
+<script>
+    const countdown = () => {
+        const weddingDate = new Date("2025-04-27T14:00:00").getTime();
+        const now = new Date().getTime();
+        const distance = weddingDate - now;
+
+        if (distance < 0) {
+            document.getElementById("countdown").innerHTML = "<p>Hẹn gặp lại trong đám cưới nhé!</p>";
+            return;
+        }
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("days").innerText = String(days).padStart(2, "0");
+        document.getElementById("hours").innerText = String(hours).padStart(2, "0");
+        document.getElementById("minutes").innerText = String(minutes).padStart(2, "0");
+        document.getElementById("seconds").innerText = String(seconds).padStart(2, "0");
+    };
+
+    setInterval(countdown, 1000);
+</script>
+</body>
+</html>
